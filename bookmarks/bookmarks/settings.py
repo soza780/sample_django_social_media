@@ -26,8 +26,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Application definition
+# auth backend
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
 
+# Application definition
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'django.contrib.admin',
