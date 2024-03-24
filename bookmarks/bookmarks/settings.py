@@ -43,7 +43,7 @@ SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.social_auth.social_user',
     'social_core.pipeline.user.get_username',
     'social_core.pipeline.user.create_user',
-    'account.authentication.create_profile', # creates user profile in social core pipline
+    'account.authentication.create_profile',  # creates user profile in social core pipline
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
@@ -58,7 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django',
+    'social_django',  # login with social accounts (third party)
+    'images.apps.ImagesConfig',  # Image app
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # MEDIA
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript', '.js', True)
+    mimetypes.add_type('text/css', '.css', True)
